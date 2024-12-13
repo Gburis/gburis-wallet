@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GW Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="./css/styles.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container-fluid p-0 m-0">
+        <!-- INICIO NAVBAR  -->
+        <nav class="navbar bg-body-tertiary navbar-top-gw">
+            <div class="container-fluid position-relative">
+              <a class="navbar-brand z-1" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+                <img class="rounded-circle" width="35" height="35" src="https://media.licdn.com/dms/image/v2/C5603AQH2culgUrNLDA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1653330602748?e=1739404800&v=beta&t=fh7JxJgs9VSRKNbwfTxK3QCnQWZxy-dyM3nqdRz8Oi0">
+                <span class="menu-icon">
+                  <i class="fas fa-bars"></i>
+                </span>
+              </a>
+
+              <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Gburis Wallet</h5>
+                    <button type="button" class="btn-close btn-close-gray" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                  </div>
+                  <div class="offcanvas-body">
+                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                      <li class="nav-item chamar-toast">
+                        <a class="nav-link sidebar-gw menu active" aria-current="page" href="#">
+                            Perfil
+                            <i class="fa-solid fa-user"></i>
+                        </a>
+                      </li>
+                      <li class="nav-item dropdown chamar-toast">
+                        <a class="nav-link sidebar-gw dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          Configurações
+                          <i class="fa-solid fa-gear"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="#">Tema</a></li>
+                          <li><a class="dropdown-item" href="#">Notificações</a></li>
+                        </ul>
+                      </li>
+                      <li>
+                        <hr>
+                      </li>
+                      <li class="nav-item chamar-toast">
+                        <a class="nav-link sidebar-gw active" aria-current="page" href="#">
+                            Sair
+                            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              <span class="navbar-text mx-auto fs-5 fw-bold text-white z-0">Carteira</span>
+            </div>
+        </nav>
+        <!-- FIM NAVBAR  --> 
+    </div>
+
+    <!-- INIVIO DO CONTEUDO -->
+    <div class="container mt-md-3 mt-4">
+        <div class="row justify-content-center">
+            <div class="col-md-10 com-sm-11">
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="resumo-tab" data-bs-toggle="tab" data-bs-target="#resumo-tab-pane" type="button" role="tab" aria-controls="resumo-tab-pane" aria-selected="true">Resumo</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="ativos-tab" data-bs-toggle="tab" data-bs-target="#ativos-tab-pane" type="button" role="tab" aria-controls="ativos-tab-pane" aria-selected="false">Ativos</button>
+                    </li>
+                </ul>
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane bg-white min-vh-50 overflow-auto fade show active" id="resumo-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
+                        <div class="container mt-5">
+                            <div class="row justify-content-around align-items-center">
+                                <div class="col-md-5 col-sm-11 card-resumo">
+                                    <div class="row justify-content-around">
+                                        <div class="col-11 rounded-3" height="100">
+                                            <img src="./img/icon-vlr-invest.png">
+                                            <span class="fw-bold">
+                                                Valor investido<br>
+                                                R$ 23.563,92
+                                            </span>
+                                            <p class="mt-1">
+                                                <span>
+                                                    <i class="fa-solid fa-arrow-up"></i> R$ 318,49
+                                                </span>
+                                                de rendimento 1,36% de variação
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="justify-content-around align-items-center container-pier-chart">
+                                        <h5>Composição</h5>
+                                        <div class="pie-chart">
+                                            <canvas id="myPieChart"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-5 col-sm-11 card-resumo">
+                                    <div class="chart-container mt-3">
+                                        <h5>Rentabilidade</h5>
+                                        <canvas id="resumoChart"></canvas>
+                                    </div>
+                                </div>
+                                <div class="col-md-5 col-sm-11 card-resumo mt-5 mb-4">
+                                    <div class="chart-container mt-5">
+                                        <h5>Evolução do Patrimônio</h5>
+                                        <canvas id="evolucaoRentabilidadeChart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane bg-white min-vh-50 overflow-auto fade" id="ativos-tab-pane" role="tabpanel" aria-labelledby="ativos-tab" tabindex="0">
+                        <div class="container ct-ativos">
+                            <div class="row justify-content-around align-items-center mt-5">
+                                <div class="col-11">
+                                    <div class="accordion" id="ativosAccordion"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- FIM DO CONTEUDO -->
+
+    <!-- INICIO MENU INFERIOR -->
+    <div class="container-fluid p-0 m-0">
+        <div class="row justify-content-center mx-0">
+            <div class="col-md-4 col-sm-12">
+                <div class="floating-menu d-flex justify-content-around align-items-center">
+                    <div class="menu-item text-orange cursor-pointer">
+                        <i class="fas fa-wallet"></i><br>
+                        Carteira
+                    </div>
+                    <div class="menu-item cursor-pointer chamar-toast">
+                        <i class="fas fa-plus add-icon" title="Adicionar Lançamento"></i>
+                    </div>
+                    <div class="menu-item text-orange cursor-pointer chamar-toast">
+                        <i class="fas fa-file-invoice-dollar"></i><br>
+                        Dividas
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- FIM MENU INFERIOR -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+    <script src="./scripts/ativos.js"></script>
+    <script src="./scripts/script.js"></script>
+</body>
+</html>
